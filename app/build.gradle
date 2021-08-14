@@ -40,6 +40,10 @@ generateGrammarSource {
     outputDirectory = file("src/main/java/pwms/grammar")
 }
 
+tasks.withType(JavaCompile) {
+    options.deprecation = true
+}
+
 test {
     useJUnitPlatform()
 

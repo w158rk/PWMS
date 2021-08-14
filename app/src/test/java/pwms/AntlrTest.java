@@ -2,7 +2,9 @@ package pwms;
 
 import pwms.grammar.*;
 
-import org.antlr.v4.runtime.*;
+import org.antlr.v4.runtime.CharStream;
+import org.antlr.v4.runtime.CharStreams;
+import org.antlr.v4.runtime.CommonTokenStream;
 import org.antlr.v4.runtime.tree.ParseTree;
 import org.antlr.v4.runtime.tree.ParseTreeProperty;
 import org.antlr.v4.runtime.tree.ParseTreeWalker;
@@ -21,7 +23,7 @@ public class AntlrTest {
     @Test
     public void setup() throws Exception {
         InputStream is = getClass().getResourceAsStream("/testfile");
-        ANTLRInputStream input = new ANTLRInputStream(is);
+        CharStream input = CharStreams.fromStream(is);
         PWMSLexer lexer = new PWMSLexer(input);
         CommonTokenStream tokens = new CommonTokenStream(lexer);
         PWMSParser parser = new PWMSParser(tokens);
