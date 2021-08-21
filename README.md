@@ -12,7 +12,7 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/w158rk/pwms">
+  <a href="https://github.com/w158rk/PWMS">
     <img src="docs/images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
@@ -21,14 +21,14 @@
   <p align="center">
     个人使用的仓库管理系统
     <br />
-    <a href="https://github.com/w158rk/pwms"><strong>浏览文档 »</strong></a>
+    <a href="https://github.com/w158rk/PWMS"><strong>浏览文档 »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/w158rk/pwms">查看演示</a>
+    <a href="https://github.com/w158rk/PWMS">查看演示</a>
     ·
-    <a href="https://github.com/w158rk/pwms/issues">报告Bug</a>
+    <a href="https://github.com/w158rk/PWMS/issues">报告Bug</a>
     ·
-    <a href="https://github.com/w158rk/pwms/issues">请求功能</a>
+    <a href="https://github.com/w158rk/PWMS/issues">请求功能</a>
   </p>
 </p>
 
@@ -124,7 +124,7 @@
 
 Ruikai Wang - wrk15835@outlook.com
 
-项目链接: [https://github.com/w158rk/pwms](https://github.com/w158rk/pwms)
+项目链接: [https://github.com/w158rk/PWMS](https://github.com/w158rk/PWMS)
 
 
 
@@ -135,15 +135,15 @@ Ruikai Wang - wrk15835@outlook.com
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/w158rk/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/w158rk/repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/w158rk/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/w158rk/repo/network/members
-[stars-shield]: https://img.shields.io/github/stars/w158rk/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/w158rk/repo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/w158rk/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/w158rk/repo/issues
-[license-shield]: https://img.shields.io/github/license/w158rk/repo.svg?style=for-the-badge
-[license-url]: https://github.com/w158rk/repo/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/w158rk/PWMS.svg?style=for-the-badge
+[contributors-url]: https://github.com/w158rk/PWMS/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/w158rk/PWMS.svg?style=for-the-badge
+[forks-url]: https://github.com/w158rk/PWMS/network/members
+[stars-shield]: https://img.shields.io/github/stars/w158rk/PWMS.svg?style=for-the-badge
+[stars-url]: https://github.com/w158rk/PWMS/stargazers
+[issues-shield]: https://img.shields.io/github/issues/w158rk/PWMS.svg?style=for-the-badge
+[issues-url]: https://github.com/w158rk/PWMS/issues
+[license-shield]: https://img.shields.io/github/license/w158rk/PWMS.svg?style=for-the-badge
+[license-url]: https://github.com/w158rk/PWMS/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
 [linkedin-url]: https://linkedin.com/in/w158rk
