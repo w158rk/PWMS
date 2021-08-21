@@ -1,7 +1,10 @@
 package pers.ruikai.pwms.formatter;
 
 import java.util.ArrayList;
+import java.util.Formattable;
 import java.util.List;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import com.jakewharton.fliptables.FlipTable;
 
@@ -36,6 +39,44 @@ public class TextFormatter {
         return ret;
     }
 
+    private static String formatTable(String []header, String [][]cells) {
+        // class Substitution {
+        //     int row = 0;
+        //     int column = 0;
+        //     int index = 0;
+        //     String chinese = null;
+
+        //     public Substitution(int row, int column, int index, String chinese) {
+        //         this.row = row;
+        //         this.column = column;
+        //         this.index = index;
+        //         this.chinese = chinese;
+        //     }
+        // }
+        for(int i=0; i<header.length; i++) {
+            Pattern pattern = Pattern.compile("([^\u0000-\u007F])");
+            Matcher matcher = pattern.matcher(header[i]);
+            String rep = matcher.replaceAll(".$1");
+            header[i] = rep;
+        }
+
+        int rows = cells.length;
+        int cols = cells[0].length;
+        for(int i=0; i<rows; i++) {
+            for(int j=0; j<cols; j++) {
+                Pattern pattern = Pattern.compile("([^\u0000-\u007F])");
+                Matcher matcher = pattern.matcher(cells[i][j]);
+                String rep = matcher.replaceAll(".$1");
+                cells[i][j] = rep;
+            }
+        }
+
+
+        String table = FlipTable.of(header, cells);
+        table = table.replace(".", "");
+        return table;
+    }
+
     private static String format(Category category) {
         List<String> lines = new ArrayList<>();
         String ret = null;
@@ -62,8 +103,7 @@ public class TextFormatter {
         String [][]rowsArray = new String[rows.size()][rows.get(0).length];
         headerArray = header.toArray(headerArray);
         rowsArray = rows.toArray(rowsArray);
-        String table = FlipTable.of(headerArray, rowsArray);
-        lines.add(table);
+        lines.add(formatTable(headerArray, rowsArray));
 
         ret = String.join("\n", lines);
         return ret;
