@@ -13,8 +13,8 @@ gantt
     剩余物品文本输出流程             :done,     proc-textout, after textout, 2d
 
     section 开发
-    输入编译解析                :         dev-compile, after proc-compile, 1d
-    剩余物品文本输出             :         dev-textout, after proc-textout, 1d
+    输入编译解析                :done,    dev-compile, 2021-08-21, 1d
+    剩余物品文本输出             :         dev-textout, 2021-08-21, 1d
 
     section 文档
     输入编译解析             :         doc-compile, after dev-compile, 1d

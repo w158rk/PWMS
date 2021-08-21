@@ -1,10 +1,12 @@
 package pers.ruikai.pwms.models;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Transaction {
 
-    enum InOrOut {
+    public enum InOrOut {
         IN, OUT
     }
 
@@ -14,6 +16,21 @@ public class Transaction {
     private int number;
     private String unit;
     private String note;
+    private List<String> values;
+
+    public Transaction() {
+        values = new ArrayList<>();
+    }
+
+    public boolean addValue(String value) {
+        return values.add(value);
+    }
+    public List<String> getValues() {
+        return values;
+    }
+    public void setValues(List<String> values) {
+        this.values = values;
+    }
     public Date getDate() {
         return date;
     }

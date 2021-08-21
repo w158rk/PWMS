@@ -3,6 +3,7 @@ package pers.ruikai.pwms.compiler;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.text.ParseException;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -28,6 +29,9 @@ import pers.ruikai.pwms.compiler.PWMSParser.RecordContext;
 import pers.ruikai.pwms.compiler.PWMSParser.RecordsContext;
 import pers.ruikai.pwms.compiler.PWMSParser.UnitContext;
 import pers.ruikai.pwms.models.Category;
+import pers.ruikai.pwms.models.Transaction;
+import pers.ruikai.pwms.utils.DateConverter;
+import pers.ruikai.pwms.utils.ListElementFinder;
 import pers.ruikai.pwms.warehouse.Warehouse;
 
 public class Builder extends AbstractParseTreeVisitor<Void> implements PWMSVisitor<Void>{
@@ -48,7 +52,7 @@ public class Builder extends AbstractParseTreeVisitor<Void> implements PWMSVisit
         parser.setBuildParseTree(true);      // tell ANTLR to build a parse tree
         ParseTree tree = parser.records(); // parse
         visit(tree);
-        return null;
+        return new Warehouse(categories);
     }
 
     public Warehouse build(String path) throws IOException{
@@ -61,12 +65,14 @@ public class Builder extends AbstractParseTreeVisitor<Void> implements PWMSVisit
         for(CategoryContext c : ctx.category()) {
             visit(c);
         }
+        for(RecordContext c: ctx.record()) {
+            visit(c);
+        }
         return null;
     }
 
     @Override
     public Void visitCategory(CategoryContext ctx) {
-        int childCnt = ctx.getChildCount();
         String name = ctx.name().getText();
         String code = ctx.code().getText();
         Category category = new Category(name, code);
@@ -80,7 +86,50 @@ public class Builder extends AbstractParseTreeVisitor<Void> implements PWMSVisit
 
     @Override
     public Void visitRecord(RecordContext ctx) {
-        // TODO Auto-generated method stub
+        if(ctx.date()!=null) {
+            try {
+                this.date = DateConverter.string2Date(ctx.date().getText());
+            }
+            catch(ParseException e) {
+                // do nothing
+            }
+        }
+
+        Transaction tx = new Transaction();
+        tx.setDate(date);
+
+        if(ctx.IN()!=null) {
+            tx.setInOrOut(Transaction.InOrOut.IN);
+        }
+        else {
+            tx.setInOrOut(Transaction.InOrOut.OUT);
+        }
+
+        String name = ctx.name().getText();
+        ListElementFinder<Category> finder = new ListElementFinder<>(categories);
+        try {
+            Category category = finder.findFirst((Category c) -> (c.getName().equals(name)));
+            assert (category!=null);
+            category.addTransaction(tx);
+        }
+        catch(ParseException e) {
+            return null;
+        }
+        catch(AssertionError e) {
+            return null;
+        }
+        catch(Exception e) {
+            return null;
+        }
+
+        if(ctx.note()!=null) tx.setNote(ctx.note().getText());
+        tx.setNumber(Integer.parseInt(ctx.number().getText()));
+        tx.setUnit(ctx.unit().getText());
+
+        for(AttrvalueContext value: ctx.attrvalue()) {
+            tx.addValue(value.getText());
+        }
+
         return null;
     }
 

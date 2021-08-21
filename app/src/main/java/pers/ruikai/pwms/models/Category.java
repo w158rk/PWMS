@@ -20,11 +20,22 @@ public class Category {
         this.code = code;
     }
 
+    @Override
+    public boolean equals(Object obj) {
+        return name.equals(((Category)obj).name);
+    }
+
+    @Override
+    public int hashCode() {
+        return name.hashCode();
+    }
+
     public boolean addAttrName(String name) {
         return attrNames.add(name);
     }
 
     public boolean addTransaction(Transaction transaction) {
+        transaction.setCatetory(this);
         return transactions.add(transaction);
     }
 
