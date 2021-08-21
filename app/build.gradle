@@ -12,6 +12,10 @@ plugins {
     id 'antlr'
 }
 
+configurations {
+    umlDoclet
+}
+
 repositories {
     mavenLocal()
     maven { url 'https://maven.aliyun.com/repository/central' }
@@ -35,14 +39,26 @@ dependencies {
     // arg parser
     implementation group: 'commons-cli', name: 'commons-cli', version: '1.4'
 
+    // class diagram
+    umlDoclet "nl.talsmasoftware:umldoclet:2.0.12"
 
 }
+
+javadoc {
+    // source = sourceSets.main.allJava
+    include "**/utils/**"
+    options.docletpath = configurations.umlDoclet.files.asType(List)
+    options.doclet = "nl.talsmasoftware.umldoclet.UMLDoclet"
+}
+
 
 
 application {
     // Define the main class for the application.
     mainClass = 'pers.ruikai.pwms.App'
 }
+
+
 
 generateGrammarSource {
     // outputDirectory = file("src/main/java/pers/ruikai/pwms/compiler")
@@ -64,5 +80,3 @@ test {
         logger.lifecycle("Running test: " + descriptor)
     }
 }
-
-

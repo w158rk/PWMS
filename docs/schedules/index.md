@@ -14,11 +14,14 @@ gantt
 
     section 开发
     输入编译解析                :done,    dev-compile, 2021-08-21, 1d
-    剩余物品文本输出             :         dev-textout, 2021-08-21, 1d
+    剩余物品文本输出             :done,    dev-textout, 2021-08-21, 1d
 
     section 文档
-    输入编译解析             :         doc-compile, after dev-compile, 1d
-    剩余物品文本输出          :         doc-textout, after dev-textout, 1d
+    models             :done,   doc-compile, after dev-compile, 1d
+    utils            :         doc-textout, after dev-textout, 1d
+    warehouse          :         doc-textout, after dev-textout, 1d
+    compiler          :         doc-textout, after dev-textout, 1d
+    formatter          :         doc-textout, after dev-textout, 1d
 
     section 测试
     输入编译解析             :         test-compile, after dev-compile, 1d
