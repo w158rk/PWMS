@@ -3,12 +3,64 @@
  */
 package pers.ruikai.pwms;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+
+import org.apache.commons.cli.CommandLine;
+import org.apache.commons.cli.CommandLineParser;
+import org.apache.commons.cli.DefaultParser;
+import org.apache.commons.cli.HelpFormatter;
+import org.apache.commons.cli.Options;
+import org.apache.commons.cli.ParseException;
+
+import pers.ruikai.pwms.compiler.Builder;
+import pers.ruikai.pwms.formatter.TextFormatter;
+import pers.ruikai.pwms.warehouse.Warehouse;
+
 public class App {
-    public String getGreeting() {
-        return "Hello World!";
+    private static Options getOptions() {
+        Options options = new Options();
+        options.addOption("h", false, "show the help information");
+        return options;
     }
 
     public static void main(String[] args) {
-        System.out.println(new App().getGreeting());
+        CommandLineParser parser = new DefaultParser();
+        CommandLine line = null;
+        try {
+            line = parser.parse(getOptions(), args);
+        }
+        catch( ParseException exp ) {
+            // oops, something went wrong
+            System.err.println( "Parsing failed.  Reason: " + exp.getMessage() );
+        }
+
+        if(line.hasOption("h")) {
+            String formatstr = "pwms [options] file";
+            HelpFormatter hf = new HelpFormatter();
+            hf.printHelp(formatstr, "", getOptions(), "");
+            return;
+        }
+
+        String[] arguments = line.getArgs();
+        if(arguments.length!=1) {
+            System.out.println("Your should Specify an input file");
+            return;
+        }
+
+        Warehouse warehouse = null;
+        try {
+            System.out.println(arguments[0]);
+            InputStream is = new FileInputStream(arguments[0]);
+            warehouse = new Builder().build(is);
+        }
+        catch(IOException e) {
+            System.out.println("The input file does not exist");
+            return;
+        }
+
+        System.out.println(TextFormatter.format(warehouse));
     }
 }
