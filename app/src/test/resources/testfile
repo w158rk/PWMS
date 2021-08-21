@@ -1,5 +1,5 @@
 category 针织T恤衫 181105 品牌 颜色.
-category TEST 002.
+category TEST 002 a1 a2 a3.
 2021-08-14 IN 针织T恤衫 1 件 未知 黑色.
 IN 针织T恤衫 1 件 海澜之家 蓝色.
 IN 针织T恤衫 1 件 BBoy 白色.
@@ -9,7 +9,7 @@ OUT 针织T恤衫 1 件 BBoy 白色.
 
 IN TEST 1 UNIT.
 IN TEST 1 UNIT v1 v2 3.
-2021-08-14 OUT TEST 1 UNIT v1 v2 3.
-2021-08-14 OUT TEST 1 UNIT.
+2021-08-14 IN TEST 1 UNIT v1 v2 3.
+2021-08-14 IN TEST 1 UNIT.
 OUT TEST 1 UNIT.
 OUT TEST 1 UNIT v1 v2 3.

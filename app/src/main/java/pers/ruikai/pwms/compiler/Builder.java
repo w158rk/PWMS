@@ -107,8 +107,9 @@ public class Builder extends AbstractParseTreeVisitor<Void> implements PWMSVisit
 
         String name = ctx.name().getText();
         ListElementFinder<Category> finder = new ListElementFinder<>(categories);
+        Category category;
         try {
-            Category category = finder.findFirst((Category c) -> (c.getName().equals(name)));
+            category = finder.findFirst((Category c) -> (c.getName().equals(name)));
             assert (category!=null);
             category.addTransaction(tx);
         }
@@ -126,8 +127,15 @@ public class Builder extends AbstractParseTreeVisitor<Void> implements PWMSVisit
         tx.setNumber(Integer.parseInt(ctx.number().getText()));
         tx.setUnit(ctx.unit().getText());
 
-        for(AttrvalueContext value: ctx.attrvalue()) {
-            tx.addValue(value.getText());
+        if(ctx.attrvalue().isEmpty()) {
+            for(String attr: category.getAttrNames()) {
+                tx.addValue("");
+            }
+        }
+        else {
+            for(AttrvalueContext value: ctx.attrvalue()) {
+                tx.addValue(value.getText());
+            }
         }
 
         return null;
