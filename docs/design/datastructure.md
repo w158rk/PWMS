@@ -6,8 +6,8 @@
 
 ```mermaid
 erDiagram
-    OBJ ||--o{ TX : one-to-many
-    OBJ {
+    Category ||--o{ TX : one-to-many
+    Category {
         string name
         string code
         list attr_names
@@ -15,7 +15,7 @@ erDiagram
     TX {
         Date date
         enum in_or_out
-        OBJ category
+        Category category
         int number
         string unit
         map attr_values

@@ -1,6 +1,4 @@
-package pwms;
-
-import pwms.grammar.*;
+package pers.ruikai.pwms;
 
 import org.antlr.v4.runtime.CharStream;
 import org.antlr.v4.runtime.CharStreams;
@@ -12,6 +10,8 @@ import org.antlr.v4.runtime.tree.TerminalNode;
 
 
 import org.junit.jupiter.api.Test;
+
+import pers.ruikai.pwms.compiler.*;
 
 import java.io.FileInputStream;
 import java.io.InputStream;

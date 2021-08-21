@@ -37,7 +37,8 @@ application {
 }
 
 generateGrammarSource {
-    outputDirectory = file("src/main/java/pwms/grammar")
+    // outputDirectory = file("src/main/java/pers/ruikai/pwms/compiler")
+    arguments += ["-no-listener", "-visitor"]
 }
 
 tasks.withType(JavaCompile) {
@@ -46,6 +47,7 @@ tasks.withType(JavaCompile) {
 
 test {
     useJUnitPlatform()
+    testLogging.showStandardStreams = true
 
     beforeTest { descriptor ->
         logger.lifecycle("Running test: " + descriptor)
