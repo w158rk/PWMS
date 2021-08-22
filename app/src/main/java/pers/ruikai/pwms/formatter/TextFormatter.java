@@ -53,7 +53,7 @@ public class TextFormatter {
         }
 
         int rows = cells.length;
-        int cols = cells[0].length;
+        int cols = header.length;
         for(int i=0; i<rows; i++) {
             for(int j=0; j<cols; j++) {
                 Pattern pattern = Pattern.compile("([^\u0000-\u007F])");
@@ -92,7 +92,7 @@ public class TextFormatter {
         }
 
         String [] headerArray = new String[header.size()];
-        String [][]rowsArray = new String[rows.size()][rows.get(0).length];
+        String [][]rowsArray = new String[rows.size()][header.size()];
         headerArray = header.toArray(headerArray);
         rowsArray = rows.toArray(rowsArray);
         lines.add(formatTable(headerArray, rowsArray));

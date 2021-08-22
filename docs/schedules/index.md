@@ -29,6 +29,6 @@ gantt
 
     section 发布
     修改README          :done,   readme, after test-compile, 1d
-    v0.0.1 发布         :   v0.0.1, after readme, 1d
+    v0.0.1 发布         :done,   v0.0.1, after readme, 1d
 
 ```

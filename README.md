@@ -184,6 +184,7 @@ gradle build
 
 - ~~编译入库出库文件~~
 - ~~终端输出仓库描述~~
+- bug: 4位编号与YEAR冲突
 
 <!-- CONTRIBUTING -->
 ## 贡献
