@@ -18,17 +18,17 @@ gantt
 
     section 文档
     models             :done,   doc-compile, after dev-compile, 1d
-    utils            :         doc-textout, after dev-textout, 1d
-    warehouse          :         doc-textout, after dev-textout, 1d
-    compiler          :         doc-textout, after dev-textout, 1d
-    formatter          :         doc-textout, after dev-textout, 1d
+    utils            :done,         doc-textout, after dev-textout, 1d
+    warehouse          :done,         doc-textout, after dev-textout, 1d
+    compiler          :done,         doc-textout, after dev-textout, 1d
+    formatter          :done,         doc-textout, after dev-textout, 1d
 
     section 测试
-    输入编译解析             :         test-compile, after dev-compile, 1d
-    剩余物品文本             :         test-textout, after dev-textout, 1d
+    输入编译解析             :done,    test-compile, after dev-compile, 1d
+    剩余物品文本             :done,    test-textout, after dev-textout, 1d
 
     section 发布
-    修改README          :   readme, after test-compile, 1d
+    修改README          :done,   readme, after test-compile, 1d
     v0.0.1 发布         :   v0.0.1, after readme, 1d
 
 ```

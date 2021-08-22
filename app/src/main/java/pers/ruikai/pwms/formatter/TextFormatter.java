@@ -14,6 +14,11 @@ import pers.ruikai.pwms.models.Transaction.InOrOut;
 import pers.ruikai.pwms.utils.DateConverter;
 import pers.ruikai.pwms.warehouse.Warehouse;
 
+/**
+ * format the ware house as a string
+ *
+ @version 0.0.1
+ */
 public class TextFormatter {
 
     private static int numObject(Category category) {
@@ -40,19 +45,6 @@ public class TextFormatter {
     }
 
     private static String formatTable(String []header, String [][]cells) {
-        // class Substitution {
-        //     int row = 0;
-        //     int column = 0;
-        //     int index = 0;
-        //     String chinese = null;
-
-        //     public Substitution(int row, int column, int index, String chinese) {
-        //         this.row = row;
-        //         this.column = column;
-        //         this.index = index;
-        //         this.chinese = chinese;
-        //     }
-        // }
         for(int i=0; i<header.length; i++) {
             Pattern pattern = Pattern.compile("([^\u0000-\u007F])");
             Matcher matcher = pattern.matcher(header[i]);
@@ -109,6 +101,11 @@ public class TextFormatter {
         return ret;
     }
 
+    /**
+     *
+     * @param warehouse Warehouse object
+     * @return the formatted string
+     */
     public static String format(Warehouse warehouse) {
         String ret = "";
         List<Category> categories = warehouse.getCategories();

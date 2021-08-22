@@ -45,8 +45,9 @@ dependencies {
 }
 
 javadoc {
-    // source = sourceSets.main.allJava
-    include "**/utils/**"
+    source = sourceSets.main.allJava
+    options.addBooleanOption('version', true)
+    options.addBooleanOption('html5', true)
     options.docletpath = configurations.umlDoclet.files.asType(List)
     options.doclet = "nl.talsmasoftware.umldoclet.UMLDoclet"
 }

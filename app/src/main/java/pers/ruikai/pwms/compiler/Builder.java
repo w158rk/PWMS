@@ -34,16 +34,30 @@ import pers.ruikai.pwms.utils.DateConverter;
 import pers.ruikai.pwms.utils.ListElementFinder;
 import pers.ruikai.pwms.warehouse.Warehouse;
 
+/**
+ * Build the warehouse from a text stream
+ *
+ * @version 0.0.1
+ */
 public class Builder extends AbstractParseTreeVisitor<Void> implements PWMSVisitor<Void>{
 
     private List<Category> categories;
     private Date date;
 
+    /**
+     * constructor
+     */
     public Builder() {
         categories = new ArrayList<>();
         date = new Date();
     }
 
+    /**
+     *
+     * @param is the input stream
+     * @return a Warehouse object
+     * @throws IOException error in processing the stream
+     */
     public Warehouse build(InputStream is) throws IOException {
         CharStream input = CharStreams.fromStream(is);
         PWMSLexer lexer = new PWMSLexer(input);
@@ -55,11 +69,23 @@ public class Builder extends AbstractParseTreeVisitor<Void> implements PWMSVisit
         return new Warehouse(categories);
     }
 
+    /**
+     *
+     * @param path the file path
+     * @return a Warehouse object
+     * @throws IOException error in processing the file stream
+     */
     public Warehouse build(String path) throws IOException{
         InputStream is = new FileInputStream(path);
         return build(is);
     }
 
+    /**
+     * visit a records <br>
+     * records is the root unterminator in the grammar rules
+     * @param ctx RecordsContext
+     * @return void
+     */
     @Override
     public Void visitRecords(RecordsContext ctx) {
         for(CategoryContext c : ctx.category()) {
@@ -71,6 +97,12 @@ public class Builder extends AbstractParseTreeVisitor<Void> implements PWMSVisit
         return null;
     }
 
+    /**
+     * visit a category line <br>
+     * a category line is in the form of 'CATEGORY name code attrname* DOT'
+     * @param ctx CategoryContext object
+     * @return void
+     */
     @Override
     public Void visitCategory(CategoryContext ctx) {
         String name = ctx.name().getText();
@@ -84,6 +116,12 @@ public class Builder extends AbstractParseTreeVisitor<Void> implements PWMSVisit
         return null;
     }
 
+    /**
+     * visit a record line <br>
+     * a record line is in the form of 'date? (IN|OUT) name number unit attrvalue* (DOT note)? DOT'
+     * @param ctx RecordContext object
+     * @return void
+     */
     @Override
     public Void visitRecord(RecordContext ctx) {
         if(ctx.date()!=null) {
@@ -113,9 +151,6 @@ public class Builder extends AbstractParseTreeVisitor<Void> implements PWMSVisit
             assert (category!=null);
             category.addTransaction(tx);
         }
-        catch(ParseException e) {
-            return null;
-        }
         catch(AssertionError e) {
             return null;
         }
@@ -141,48 +176,87 @@ public class Builder extends AbstractParseTreeVisitor<Void> implements PWMSVisit
         return null;
     }
 
+    /**
+     * empty implementation
+     * @param ctx NameContext object
+     * @return void
+     */
     @Override
     public Void visitName(NameContext ctx) {
         // TODO Auto-generated method stub
         return null;
     }
 
+    /**
+     * empty implementation
+     * @param ctx CodeContext object
+     * @return void
+     */
     @Override
     public Void visitCode(CodeContext ctx) {
         // TODO Auto-generated method stub
         return null;
     }
-
+    /**
+     * empty implementation
+     * @param ctx AttrnameContext object
+     * @return void
+     */
     @Override
     public Void visitAttrname(AttrnameContext ctx) {
         // TODO Auto-generated method stub
         return null;
     }
 
+    /**
+     * empty implementation
+     * @param ctx DateContext object
+     * @return void
+     */
     @Override
     public Void visitDate(DateContext ctx) {
         // TODO Auto-generated method stub
         return null;
     }
 
+    /**
+     * empty implementation
+     * @param ctx NumberContext object
+     * @return void
+     */
     @Override
     public Void visitNumber(NumberContext ctx) {
         // TODO Auto-generated method stub
         return null;
     }
 
+    /**
+     * empty implementation
+     * @param ctx UnitContext object
+     * @return void
+     */
     @Override
     public Void visitUnit(UnitContext ctx) {
         // TODO Auto-generated method stub
         return null;
     }
 
+    /**
+     * empty implementation
+     * @param ctx NoteContext object
+     * @return void
+     */
     @Override
     public Void visitNote(NoteContext ctx) {
         // TODO Auto-generated method stub
         return null;
     }
 
+    /**
+     * empty implementation
+     * @param ctx AttrvalueContext object
+     * @return void
+     */
     @Override
     public Void visitAttrvalue(AttrvalueContext ctx) {
         // TODO Auto-generated method stub
