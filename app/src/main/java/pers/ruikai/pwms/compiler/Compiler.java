@@ -5,7 +5,7 @@ import pers.ruikai.pwms.warehouse.Warehouse;
 /**
  * not important in current version
  *
- * @version 0.0.1
+ *
  */
 public class Compiler {
 

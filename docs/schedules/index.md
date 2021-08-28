@@ -1,5 +1,7 @@
 # 开发时间计划
 
+# v0.0.1
+
 ```mermaid
 gantt
     dateFormat  YYYY-MM-DD
@@ -32,3 +34,5 @@ gantt
     v0.0.1 发布         :done,   v0.0.1, after readme, 1d
 
 ```
+
+# v0.1.0

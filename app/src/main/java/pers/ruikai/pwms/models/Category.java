@@ -11,7 +11,7 @@ import java.util.List;
  * - attrNames list of attribute names <br>
  * - attrNames list of transactions whose thing belongs to this category <br>
  *
- * @version 0.0.1
+ *
  */
 public class Category {
     private String name;

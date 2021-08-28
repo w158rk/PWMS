@@ -17,7 +17,7 @@ import pers.ruikai.pwms.warehouse.Warehouse;
 /**
  * format the ware house as a string
  *
- @version 0.0.1
+
  */
 public class TextFormatter {
 

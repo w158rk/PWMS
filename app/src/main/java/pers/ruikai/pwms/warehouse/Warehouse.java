@@ -7,7 +7,7 @@ import pers.ruikai.pwms.models.Category;
 /**
  * class to represent a personal warehouse
  *
- * @version 0.0.1
+ *
  */
 public class Warehouse {
 

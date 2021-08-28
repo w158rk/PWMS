@@ -5,7 +5,7 @@ import java.util.List;
 /**
  * class to find the first element with some conditions hold in the list
  *
- * @version 0.0.1
+ *
  */
 public class ListElementFinder<E> {
     private List<E> list;

@@ -37,7 +37,7 @@ import pers.ruikai.pwms.warehouse.Warehouse;
 /**
  * Build the warehouse from a text stream
  *
- * @version 0.0.1
+ *
  */
 public class Builder extends AbstractParseTreeVisitor<Void> implements PWMSVisitor<Void>{
 

@@ -15,7 +15,7 @@ import java.util.List;
  *      - note: some additional information about the things <br>
  *      - values: corresponding to the category attribute names <br>
  *
- * @version 0.0.1
+ *
  */
 public class Transaction {
 
