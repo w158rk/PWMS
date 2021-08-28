@@ -1,5 +1,34 @@
 # 开发时间计划
 
+# v0.1.0
+
+```mermaid
+gantt
+    dateFormat  YYYY-MM-DD
+    title       项目开发计划
+
+    section 设计
+    预编译                          :    design-pre, 2021-08-28, 1d
+    单类别多物品                    :   design-multi, 2021-08-28, 1d
+
+    section 开发
+    预编译                          :    dev-pre, after design-pre, 1d
+    单类别多物品                    :   dev-multi, after design-multi, 1d
+
+    section 文档
+    文档             :  doc, after dev-multi, 1d
+
+    section 测试
+    预编译                          :    test-pre, after dev-pre, 1d
+    单类别多物品                    :   test-multi, after dev-multi, 1d
+
+    section 发布
+    修改README          :  readme, after test-multi, 1d
+    v0.1.0 发布         :   v0.1.0, after readme, 1d
+
+```
+
+
 # v0.0.1
 
 ```mermaid
@@ -34,5 +63,3 @@ gantt
     v0.0.1 发布         :done,   v0.0.1, after readme, 1d
 
 ```
-
-# v0.1.0

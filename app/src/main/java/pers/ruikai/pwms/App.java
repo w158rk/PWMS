@@ -16,6 +16,7 @@ import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
 import pers.ruikai.pwms.compiler.Builder;
+import pers.ruikai.pwms.compiler.Compiler;
 import pers.ruikai.pwms.formatter.TextFormatter;
 import pers.ruikai.pwms.warehouse.Warehouse;
 
@@ -54,7 +55,7 @@ public class App {
         try {
             System.out.println(arguments[0]);
             InputStream is = new FileInputStream(arguments[0]);
-            warehouse = new Builder().build(is);
+            warehouse = new Compiler(arguments[0]).compile(is);
         }
         catch(IOException e) {
             System.out.println("The input file does not exist");

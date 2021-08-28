@@ -1,0 +1,2 @@
+category 针织T恤衫 181105 品牌 颜色.
+category TEST 002 a1 a2 a3.
